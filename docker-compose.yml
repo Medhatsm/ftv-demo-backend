@@ -9,10 +9,6 @@ services:
         - "9080:8080"
         networks:
         - ftv-demo-network
-        environment:
-        - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/gateway -Dsl.buildName=0.0.1 -Dsl.labId=integ_test_dc8f_CalculatorMedhat -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=error
-        volumes:
-        - /home/medhatsm/sealights:/sealights 
     calculator:
         env_file:
         - parameters.env
@@ -22,10 +18,7 @@ services:
         - "9081:8080"
         networks:
         - ftv-demo-network
-        environment:
-        - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/calculator -Dsl.buildName=0.0.1 -Dsl.labId=integ_test_dc8f_CalculatorMedhat -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
-        volumes:
-        - /home/medhatsm/sealights:/sealights 
+
     summator:
         env_file:
         - parameters.env
@@ -35,10 +28,7 @@ services:
         - "9082:8080"
         networks:
         - ftv-demo-network
-        environment:
-        - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/summator -Dsl.buildName=0.0.1 -Dsl.labId=integ_test_dc8f_CalculatorMedhat -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
-        volumes:
-        - /home/medhatsm/sealights:/sealights 
+ 
 networks:
     ftv-demo-network:
         driver: bridge
