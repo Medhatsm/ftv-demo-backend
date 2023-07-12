@@ -1,5 +1,7 @@
 package i0.sealights.demo.calculator.configuration;
 
+import java.io.*;
+
 import i0.sealights.demo.calculator.service.CalculatorService;
 import i0.sealights.demo.calculator.service.ExpressionValidator;
 import org.springframework.context.annotation.Bean;
@@ -10,11 +12,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 public class CalcConfiguration {
-
+     public void sk(){
+        System.out.println("hello");
+     }
+     
     @Bean
     public CalculatorService calculatorService() {
         return new CalculatorService(new ExpressionValidator());
     }
+
+
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
