@@ -11,6 +11,9 @@ services:
         - ftv-demo-network
         environment:
         - JAVA_TOOL_OPTIONS=-javaagent:./sl-cd-agent.jar -Dsl.tokenFile=./sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-gateway -Dsl.buildName=0.0.1 -Dsl.labId=integ_dev_52ce_CalculatorMedhatjenkins -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
+        volume:
+        - /var/lib/jenkins/workspace/calculator-medhat/sl-cd-agent.jar:/
+        - /var/lib/jenkins/workspace/calculator-medhat/sltoken.txt:/ 
     calculator:
         env_file:
         - parameters.env
@@ -22,6 +25,11 @@ services:
         - ftv-demo-network
         environment:
         - JAVA_TOOL_OPTIONS=-javaagent:./sl-cd-agent.jar -Dsl.tokenFile=./sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-calculator -Dsl.buildName=0.0.1 -Dsl.labId=integ_dev_52ce_CalculatorMedhatjenkins -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
+        volume:
+        - /var/lib/jenkins/workspace/calculator-medhat/sl-cd-agent.jar:/
+        - /var/lib/jenkins/workspace/calculator-medhat/sltoken.txt:/
+
+        
     summator:
         env_file:
         - parameters.env
@@ -33,6 +41,9 @@ services:
         - ftv-demo-network
         environment:
         - JAVA_TOOL_OPTIONS=-javaagent:./sl-cd-agent.jar -Dsl.tokenFile=./sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-summator -Dsl.buildName=0.0.1 -Dsl.labId=integ_dev_52ce_CalculatorMedhatjenkins -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
+        volume:
+        - /var/lib/jenkins/workspace/calculator-medhat/sl-cd-agent.jar:/
+        - /var/lib/jenkins/workspace/calculator-medhat/sltoken.txt:/
 networks:
     ftv-demo-network:
         driver: bridge
