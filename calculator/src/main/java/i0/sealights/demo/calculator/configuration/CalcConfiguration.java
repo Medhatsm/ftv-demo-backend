@@ -12,10 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 public class CalcConfiguration {
+    
      public void sk(){
         System.out.println("hello");
      }
-     
+
     @Bean
     public CalculatorService calculatorService() {
         return new CalculatorService(new ExpressionValidator());
