@@ -1,0 +1,55 @@
+version: "3.9"
+services:
+    gateway:
+        env_file:
+        - parameters.env
+        container_name: gateway-server
+        build: gateway
+        ports:
+        - "9080:8080"
+        networks:
+        - ftv-demo-network
+        environment:
+        - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-gateway -Dsl.buildName=${BUILD_NUMBER} -Dsl.labId=${LAB_ID} -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
+        - BUILD_NUMBER     
+        - LAB_ID 
+        volumes:
+        - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
+        - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
+    calculator:
+        env_file:
+        - parameters.env
+        container_name: calculator-server
+        build: calculator
+        ports:
+        - "9081:8080"
+        networks:
+        - ftv-demo-network
+        environment:
+        - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-calculator -Dsl.buildName=${BUILD_NUMBER} -Dsl.labId=${LAB_ID} -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
+        - BUILD_NUMBER   
+        - LAB_ID     
+        volumes:
+        - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
+        - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
+
+        
+    summator:
+        env_file:
+        - parameters.env
+        container_name: summator-server
+        build: summator
+        ports:
+        - "9082:8080"
+        networks:
+        - ftv-demo-network
+        environment:
+        - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-summator -Dsl.buildName=${BUILD_NUMBER} -Dsl.labId=${LAB_ID} -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
+        - BUILD_NUMBER
+        - LAB_ID
+        volumes:
+        - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
+        - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
+networks:
+    ftv-demo-network:
+        driver: bridge
