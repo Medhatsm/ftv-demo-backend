@@ -32,8 +32,6 @@ services:
         volumes:
         - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
         - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
-
-        
     summator:
         env_file:
         - parameters.env
@@ -50,6 +48,6 @@ services:
         volumes:
         - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
         - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
-networks:
+
     ftv-demo-network:
         driver: bridge
