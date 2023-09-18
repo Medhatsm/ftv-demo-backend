@@ -15,13 +15,7 @@ public class CalcConfiguration {
      public void sk(){
         System.out.println("hello");
      }
-     
-
     
-     public void sk(){
-        System.out.println("hello");
-     }
-
 
     @Bean
     public CalculatorService calculatorService() {
