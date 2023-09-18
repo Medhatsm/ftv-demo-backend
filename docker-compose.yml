@@ -12,7 +12,7 @@ services:
         environment:
         - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-gateway -Dsl.buildName=${BUILD_NUMBER} -Dsl.labId=${LAB_ID} -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
         - BUILD_NUMBER     
-        - LAB_ID 
+        - LAB_ID=${LAB_ID}
         volumes:
         - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
         - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
@@ -28,7 +28,7 @@ services:
         environment:
         - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-calculator -Dsl.buildName=${BUILD_NUMBER} -Dsl.labId=${LAB_ID} -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
         - BUILD_NUMBER   
-        - LAB_ID     
+        - LAB_ID=${LAB_ID}     
         volumes:
         - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
         - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
@@ -44,7 +44,7 @@ services:
         environment:
         - JAVA_TOOL_OPTIONS=-javaagent:/sealights/sl-cd-agent.jar -Dsl.tokenFile=/sealights/sltoken.txt -Dsl.appName=Calculator-Medhat/Jenkins-summator -Dsl.buildName=${BUILD_NUMBER} -Dsl.labId=${LAB_ID} -Dsl.includes=*i0.sealights.* -Dsl.workspace=/opt/app -Dsl.log.toConsole=true -Dsl.log.level=info
         - BUILD_NUMBER
-        - LAB_ID
+        - LAB_ID=${LAB_ID}
         volumes:
         - /var/lib/jenkins/workspace/sealights/sl-cd-agent.jar:/sealights/sl-cd-agent.jar
         - /var/lib/jenkins/workspace/sealights/sltoken.txt:/sealights/sltoken.txt
